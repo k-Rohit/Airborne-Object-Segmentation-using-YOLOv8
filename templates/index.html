@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Aerial Object Detection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Ubuntu:wght@500&display=swap"
+    rel="stylesheet">
+     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <!-- Navbar -->
+
+     <section id="nav" style="margin-bottom: 0px;">
+        <header class="p-3 text-bg-dark">
+            <div class="container">
+              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                  <!-- <img class="logo" src="/Users/kumarrohit/Downloads/11.3 TinDog Project/images/Screenshot 2023-04-22 at 2.08.25 PM.png"> -->
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-white nav-text">AOD</a></li>
+                  <!-- <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                  <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                  <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                  <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                </form>
+
+                <div class="text-end">
+                  <button type="button" class="btn btn-outline-light me-2">Login</button>
+                  <button type="button" class="btn btn-warning">Sign-up</button>
+                </div>
+              </div>
+            </div>
+          </header>
+        </section>
+
+    <!-- Hero Section -->
+
+{#    <canvas id="stars"></canvas>#}
+{#<div class="slider">#}
+{#    <input type="range" min="0.5" max="15" value="2" step="0.5" >#}
+{#    Speed: <span id="speed"></span>#}
+{#</div>#}
+
+
+    <section id="hero-section" style="padding-bottom: 100px;">
+      <div class="container-fluid gradient-background">
+        <div class="container col-xxl-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+              <div class="col-10 col-sm-8 col-lg-6">
+                <video width="600" height="600" controls loop autoplay>
+                    <source src="static/mixkit-military-jets-formation-crossing-the-sky-7373-medium.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="col-lg-6">
+                <h1 class="fw-bold aod" style="font-size: 60px;">Airborne Object Detection</h1>
+                <p class="info" style="color:gray">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                  <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+                  <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+    </section>
+{#<h1 style="align-content: center">Made By</h1>#}
+
+<div id="press" style="padding-left: 260px; padding-bottom: 150px; padding-top: 100px;">
+    <img class="press-image" src="static/icons-hero.png" alt="tc-logo" style="padding-left: 20px">
+    <img class="press-image" src="static/flask-python.png" alt="tnw-logo" style="margin: auto;">
+    <img class="press-image" src="static/download.png" alt="biz-insider-logo">
+    <img class="press-image" src="static/5847f5bdcef1014c0b5e489c.png" alt="mashable-logo">
+
+  </div>
+
+
+      <div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+        <h1 class="display-5 fw-bold text-white">Upload images or videos</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="fs-5 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <!-- <div class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" style="align-items: center;" onclick="document.getElementById('fileInput').click();">
+                    Choose file
+                    <input type="file" id="fileInput" style="display:none;" onchange="displaySelectedFile(this)"> -->
+                </div>
+                <div id="previewContainer"></div>
+                <form method="POST" enctype="multipart/form-data">
+                    <!-- <div class="form-group mb-0"> -->
+                        <!-- <button type="submit" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Upload</button>
+                        <input type="file" class="form-control-file" id="file" name="file" style="display:none;"> -->
+{#                        <!-- {{form.hidden_tag()}}#}
+{#                        {{form.file()}}#}
+{#                        {{form.submit()}} -->#}
+
+                        <div class="form-group">
+                          {{form.hidden_tag()}}
+                          {{form.file(class_ = 'btn btn-outline-info btn-md px-4 me-sm-3 fw-bold')}}
+                          {{form.submit(class_ = 'btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold')}}
+                        </div>
+                    <!-- </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Timeline -->
+
+
+
+
+
+
+
+
+
+    <script src="https://kit.fontawesome.com/dcb4322f1a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+</body>
+</html>

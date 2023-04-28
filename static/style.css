@@ -1,0 +1,91 @@
+.gradient-background {
+  background: linear-gradient(300deg, #0f90bd, #ffffff, #4d4f52);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.icon-square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+}
+
+.profile-img {
+  height: 100px;
+  border-radius: 50%;
+}
+
+.h1{
+  font-family: 'Montserrat';
+  font-size: 3.5rem;
+  line-height: 1.5;
+  font-weight: 900;
+  color: white;
+  padding-bottom: 30px;
+  padding-top: 60px;
+}
+
+.title-text{
+  color: black;
+}
+
+.aod{
+  color: black;
+}
+
+.nav-text{
+  font-size: 25px;
+  font-family: 'ubuntu';
+}
+
+.logo{
+  /* width: 20px;
+  height: 20px; */
+  border-radius: 100%;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+}
+.slider {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    width: 150px;
+    color: white;
+    font-family: sans-serif;
+    text-align: right;
+}
+.slider input {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.press-image{
+    width: 250px;
+    height: 250px;
+}
+
+#footer{
+    background-color: white;
+    text-align: center;
+    padding: 20%;
+    color: #8f8f8f;
+    margin: 3%;
+}
+
+
+
