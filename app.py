@@ -25,22 +25,23 @@ class UploadFileForm(FlaskForm):
 image_array = []
 
 
-def get_frame():
-    folderPath = os.getcwd()
-    file = 'output.mp4'
-    video = cv2.VideoCapture(file)
-    while True:
-        success, image = video.read()
-        if not success:
-            break
-        ret, jpeg = cv2.imencode('.jpg', image)
-        yield jpeg.tobytes()
-        time.sleep(0.1)
+# def get_frame():
+#     folderPath = os.getcwd()
+#     file = 'output.mp4'
+#     video = cv2.VideoCapture(folderPath + '/' + file)
+#     while True:
+#         success, image = video.read()
+#         if not success:
+#             break
+#         ret, jpeg = cv2.imencode('.jpg', image)
+#         yield jpeg.tobytes()
+#         time.sleep(0.1)
 
-@app.route("/video_path")
-def video_feed():
-    print("Function called")
-    return Response(get_frame(),mimetype='multipart/x-mixed/replace; boundary=frame')
+
+# @app.route("/video_path")
+# def video_feed():
+#     print("Function called")
+#     return Response(get_frame(), mimetype='multipart/x-mixed/replace; boundary=frame')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -74,7 +75,7 @@ def predict():  # put application's code here
             # Define the codec and create the video writer object
 
             fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-            out = cv2.VideoWriter('output.mp4', fourcc, 30.0, (frame_width, frame_height))
+            out = cv2.VideoWriter('static/output.mp4', fourcc, 30.0, (frame_width, frame_height))
 
             model = YOLO('yolov8n.pt')
             while cap.isOpened():
@@ -99,6 +100,7 @@ def predict():  # put application's code here
                 for r in results:
                     boxes = r.boxes
                     for box in boxes:
+
                         x1, y1, x2, y2 = boxes.xyxy[0]
                         x1, x2, y1, y2 = int(x1), int(x2), int(y1), int(y2)
                         img = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 255), thickness=4)
@@ -107,7 +109,7 @@ def predict():  # put application's code here
                 for i in range(len(image_array)):
                     out.write(image_array[i])
 
-        return video_feed()
+        return render_template('video.html')
     return render_template('index.html', form=form)
 
 
