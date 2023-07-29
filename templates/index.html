@@ -29,19 +29,20 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-white nav-text">AOD</a></li>
+                <li><a href="#" class="nav-link px-2 text-white nav-text" style="padding-top: 15px;"><img src="static/jeticon.png" alt="" width="40px" height="40px" hspace="5px">AOD</a></li>
                   <!-- <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
                   <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                   <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
                 </ul>
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                  <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-                </form>
+{#                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">#}
+{#                  <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">#}
+{#                </form>#}
 
                 <div class="text-end">
-                  <button type="button" class="btn btn-outline-light me-2">Login</button>
-                  <button type="button" class="btn btn-warning">Sign-up</button>
+{#                  <button type="button" class="btn btn-outline-light me-2">Login</button>#}
+{#                  <button type="button" class="btn btn-warning">Sign-up</button>#}
+                    <h4 style="padding-top: 15px">Enhancing Aviation Safety and Security with YOLOv8</h4>
                 </div>
               </div>
             </div>
@@ -68,10 +69,9 @@
               </div>
               <div class="col-lg-6">
                 <h1 class="fw-bold aod" style="font-size: 60px;">Airborne Object Detection</h1>
-                <p class="info" style="color:gray">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                <p class="info" style="color:gray; text-align: justify">Welcome to our website dedicated to airborne object detection using YOLOv8. Our platform offers an accurate and efficient means of detecting airplanes, helicopters, and drones in real-time. We have developed a state-of-the-art deep learning model that is capable of identifying these objects with exceptional precision and speed. Our platform has the potential to contribute significantly to the enhancement of aviation safety, security, and environmental monitoring.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                  <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-                  <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+
                 </div>
               </div>
             </div>
@@ -94,7 +94,7 @@
     <div class="py-5">
         <h1 class="display-5 fw-bold text-white">Upload images or videos</h1>
         <div class="col-lg-6 mx-auto">
-            <p class="fs-5 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+            <p class="fs-5 mb-4" style="text-align: justify">Our platform is straightforward to use. Simply upload your aerial footage or connect to a live video feed, and our YOLOv8 model will begin detecting objects in real-time. You can customize the settings to focus on specific types of objects, adjust the sensitivity threshold, and more.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <!-- <div class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" style="align-items: center;" onclick="document.getElementById('fileInput').click();">
                     Choose file
@@ -121,18 +121,34 @@
     </div>
 </div>
 
-<!-- Timeline -->
 
+<!-- Footer section -->
 
+{#    <div class="dynamic-text" style="padding-bottom: 20px">#}
+{#        <h1 style="color: black; margin-bottom: 1px"> Our Mentor</h1>#}
+{#        <div class="dynamic-text" style="margin-bottom: 1px; margin-top: 1px">#}
+{#            <h1 style="color: #1d41de">Dr Pooja Kamat</h1>#}
+{#        </div>#}
+{#        <div class="dynamic-text" style="margin-top: 40px">#}
+{#  <h1 style="color: black">Our Team <br>#}
+{#    <span class='random-word'></span>#}
+{#  </h1>#}
+{#</div>#}
+{##}
+{#    </div>#}
 
-
-
-
-
+    <footer id="footer">
+    <i class="fa-brands fa-twitter fimg" style="padding-right: 7px"></i>
+    <i class="fa-brands fa-facebook fimg " style="padding-right: 7px"></i>
+    <i class="fa-brands fa-instagram fimg" style="padding-right: 7px"></i>
+    <i class="fa-solid fa-envelope fimg" style="padding-right: 7px"></i>
+    <p class="copy">© Copyright AOD</p>
+  </footer>
 
 
     <script src="https://kit.fontawesome.com/dcb4322f1a.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="static/index.js"></script>
 
 </body>
 </html>
