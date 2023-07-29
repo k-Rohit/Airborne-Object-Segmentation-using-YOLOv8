@@ -1,7 +1,5 @@
-import io
+import math
 import os
-import time
-
 import cv2
 from PIL import Image, ImageDraw
 from flask import Flask, render_template, Response
@@ -25,25 +23,6 @@ class UploadFileForm(FlaskForm):
 image_array = []
 
 
-# def get_frame():
-#     folderPath = os.getcwd()
-#     file = 'output.mp4'
-#     video = cv2.VideoCapture(folderPath + '/' + file)
-#     while True:
-#         success, image = video.read()
-#         if not success:
-#             break
-#         ret, jpeg = cv2.imencode('.jpg', image)
-#         yield jpeg.tobytes()
-#         time.sleep(0.1)
-
-
-# @app.route("/video_path")
-# def video_feed():
-#     print("Function called")
-#     return Response(get_frame(), mimetype='multipart/x-mixed/replace; boundary=frame')
-
-
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def predict():  # put application's code here
@@ -58,26 +37,25 @@ def predict():  # put application's code here
         extension = filepath.rsplit('.', 1)[1].lower()
         if extension == 'jpg':
             img = Image.open(filepath)
-            # frame = cv2.imencode('.jpg', cv2.UMat(img))[1].tobytes()
-            # image = Image.open(io.BytesIO(frame))
-            yolo = YOLO('yolov8n.pt')
+            yolo = YOLO('/Users/kumarrohit/PycharmProjects/flaskProject/yolov8n.pt')
             os.chdir(os.getcwd())
-            detections = yolo.predict(img, save=True)
+            yolo.predict(img, save=True)
         elif extension == 'mp4':
+
             video_path = filepath
+
             cap = cv2.VideoCapture(video_path)
+            fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+            out = cv2.VideoWriter('static/output.mp4', fourcc, 30.0, (2448, 2048), True)
 
             # Get the video dimensions
 
             frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
             frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-            # Define the codec and create the video writer object
-
-            fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-            out = cv2.VideoWriter('static/output.mp4', fourcc, 30.0, (frame_width, frame_height))
-
-            model = YOLO('yolov8n.pt')
+            # Loading the trained model
+            model = YOLO('/Users/kumarrohit/PycharmProjects/flaskProject/yolov8n.pt')
+            class_names = ['Helicopter', 'Airplane']
             while cap.isOpened():
 
                 success, frame = cap.read()
@@ -86,32 +64,44 @@ def predict():  # put application's code here
                     break
 
                 results = model.predict(frame, stream=True)
-                # print(results)
-                # cv2.waitKey(1)
-                #
-                # res_plotted = results[0].plot()
-                # cv2.imshow("result", res_plotted)
-                #
-                # # Write the frame to the output video
-                # out.write(res_plotted)
-
-                # image_array.append(frame)
 
                 for r in results:
-                    boxes = r.boxes
-                    for box in boxes:
 
+                    boxes = r.boxes
+                    # using the properties in which we have conf (torch.Tensor) to show the confidence values of the
+                    # boxes
+                    print(boxes.conf)
+
+                    for box in boxes:
                         x1, y1, x2, y2 = boxes.xyxy[0]
                         x1, x2, y1, y2 = int(x1), int(x2), int(y1), int(y2)
-                        img = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 255), thickness=4)
-                        image_array.append(img)
 
-                for i in range(len(image_array)):
-                    out.write(image_array[i])
+                        img = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 255), thickness=4)
+                        # using boxes.conf to show the confidence values of the boxes
+                        conf = math.ceil((box.conf[0] * 100)) / 100
+                        # Class name
+                        cls = int(box.cls[0])
+                        currentClass = class_names[cls]
+
+                        img = cv2.putText(img, f'{currentClass}{conf}', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1,
+                                          (0, 255, 255), 2, cv2.LINE_AA)
+
+                        image_array.append(img)
+                        # cv2.imwrite()
+                        # print(image_array)
+                        out.write(img)
+            cap.release()
+        # fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        # out = cv2.VideoWriter('output.mp4', fourcc, 30.0, (int(cap.get(3)),int(cap.get(4))))
+
+        # for i in range(len(image_array)):
+
+        # out.release()
 
         return render_template('video.html')
     return render_template('index.html', form=form)
 
 
+predict()
 if __name__ == '__main__':
-    app.run(debug=True, port=8081)
+    app.run(debug=True, port=8080)
