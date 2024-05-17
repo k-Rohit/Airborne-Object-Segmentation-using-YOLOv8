@@ -32,15 +32,15 @@ The dataset used for this project was sourced from an AI Crowd competition and i
 ## Models and Results
 
 1. **YOLOv8 Detection Models:**
-   - **Initial mAP:** 55
+   - **Initial mAP:** 55%
    - **Issues:** Incorrect classification.
 
 2. **Segmentation Model:**
-   - **Initial mAP:** 62
+   - **Initial mAP:** 62%
    - **Improved mAP with Sobel Filters:** 65
 
 3. **Dataset Division (Large and Small Objects):**
-   - **Final mAP:** 68
+   - **Final mAP:** 68%
    - **Test Performance:** Improved significantly.
 
 ## Deployment
